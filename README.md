@@ -1,7 +1,7 @@
 # Misc
 Miscellaneous Java servlets
 # <a href="https://github.com/pla1/Misc/blob/master/src/com/pla/misc/PingImageServlet.java">PingImageServlet</a>
-Returns a green image if IP address is PING'able and return red when it is not PING'able. Use it to add visual indications of device status on web pages. HTML example: <code>&lt;img src=&quot;http://pi.pla1.net?ip=8.8.8.8&quot;&gt; 8.8.8.8&lt;br&gt;</code>
+Returns a green image if IP address is PING'able and returns a red image when it is not PING'able. Use it to add visual indications of device status on web pages. HTML example: <code>&lt;img src=&quot;http://pi.pla1.net?ip=8.8.8.8&quot;&gt; 8.8.8.8&lt;br&gt;</code>
 
 <img src="http://pi.pla1.net?ip=8.8.8.8"> 8.8.8.8<br>
 <img src="http://pi.pla1.net?ip=8.8.4.4"> 8.8.4.4<br>

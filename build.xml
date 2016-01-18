@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="Misc" default="war" basedir=".">
+	<target name="clean" description="Cleans this project">
+		<delete dir="war" failonerror="false" />
+	</target>
+	<target name="build" depends="clean">
+		<mkdir dir="war/WEB-INF/lib" />
+		<mkdir dir="war/WEB-INF/classes" />
+		<mkdir dir="war/WEB-INF/resources" />
+		<mkdir dir="war/images" />
+		<copy file="WEB-INF/web.xml" todir="war/WEB-INF" />
+		<copy todir="war/WEB-INF/classes">
+			<fileset dir="bin" />
+			<fileset dir="src" />
+		</copy>
+		<copy todir="war/WEB-INF/resources">
+			<fileset dir="WEB-INF/resources" />
+		</copy>
+	</target>
+	<target name="war" depends="build" description="Create a war file">
+		<zip destfile="Misc.war" basedir="war" />
+		<delete	dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc.war" failonerror="false" />
+		<delete dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc" failonerror="false" />
+		<copy file="Misc.war" todir="/home/htplainf/apache-tomcat-8.0.11/webapps" />
+	</target>
+</project>	

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<servlet>
+		<servlet-name>TimeImageServlet</servlet-name>
+		<servlet-class>com.pla.misc.TimeImageServlet</servlet-class>
+	</servlet>
+		<servlet>
+		<servlet-name>PingImageServlet</servlet-name>
+		<servlet-class>com.pla.misc.PingImageServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MyIpServlet</servlet-name>
+		<servlet-class>com.pla.misc.MyIpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TimeImageServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PingImageServlet</servlet-name>
+		<url-pattern>/PingImageServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MyIpServlet</servlet-name>
+		<url-pattern>/MyIp</url-pattern>
+	</servlet-mapping>
+</web-app>

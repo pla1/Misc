@@ -10,3 +10,10 @@ Returns a green image if IP address is PING'able and returns a red image when it
 <img src="http://pi.pla1.net?ip=169.254.254.253"> 169.254.254.253<br>
 <img src="http://pi.pla1.net?ip=208.67.222.222"> 208.67.222.222<br>
 <img src="http://pi.pla1.net?ip=208.67.220.220"> 208.67.220.220<br>
+
+# <a href="https://github.com/pla1/Misc/blob/master/src/com/pla/misc/TimeImageServlet.java">TimeImageServlet</a>
+Display the time of day in an image. Refreshes every 60 seconds. Used here: <a href="http://time0.net">http://time0.net</a>
+<img src="http://time0.net/Misc/">
+
+# <a href="https://github.com/pla1/Misc/blob/master/src/com/pla/misc/MyIpServlet.java">MyIpServlet</a>
+Returns your IP address. Handy for scripting. Used here: <a href="http://ip.pla1.net">http://ip.pla1.net</a>

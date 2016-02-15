@@ -21,17 +21,6 @@ public class Utils {
   private static Properties properties;
 
   static {
-    try {
-      String fileName = "/etc/com.pla.properties";
-      InputStream input = new FileInputStream(new File(fileName));
-      properties = new Properties();
-      properties.load(input);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  static {
     String fileName = "/etc/com.pla.properties";
     System.out.println("Loading properties from file: " + fileName);
     try {

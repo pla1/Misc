@@ -1,2 +1,5 @@
-*.properties
 war/*
+war
+bin
+bin/*
+*.war

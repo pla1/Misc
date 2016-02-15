@@ -46,15 +46,20 @@ public class FileUploadServlet extends HttpServlet {
     }
     AttributeDAO attributeDAO = new AttributeDAO();
     if (!attributeDAO.found(types.UPLOAD_IP.name(), names.IP_ADDRESS.name(), ipAddress)) {
-      System.out.println(TAG + " Not an authorized IP address. " + ipAddress);
+      String message = TAG + " Not an authorized IP address. " + ipAddress;
+      System.out.println(message);
+      out.write(message);
+      out.flush();
+      out.close();
       return;
     }
     FileItemFactory factory = new DiskFileItemFactory();
     ServletFileUpload upload = new ServletFileUpload(factory);
     List<FileItem> items = null;
+    StringBuilder sb = new StringBuilder();
     try {
       items = upload.parseRequest(request);
-      System.out.println(TAG + "item quantity: " + items.size());
+      sb.append(TAG + "item quantity: " + items.size() + "\n");
     } catch (FileUploadException e) {
       e.printStackTrace();
       out.flush();
@@ -67,26 +72,32 @@ public class FileUploadServlet extends HttpServlet {
       if (fileItem.isFormField()) {
         String name = fileItem.getFieldName();
         String value = fileItem.getString();
-        System.out.println(TAG + "name: " + name + " value: " + value);
+        sb.append(TAG + "name: " + name + " value: " + value + "\n");
       } else {
         try {
           String fileName = fileItem.getName();
           if (fileName == null) {
-            System.out.println("File name is null. Returning without processing.");
+            sb.append(TAG + " File name is null.\n");
+            out.write(sb.toString());
+            out.flush();
+            out.close();
             return;
           }
           System.out.println(TAG + " fileName: " + fileName + " content type: " + fileItem.getContentType());
           if (fileName.toLowerCase().endsWith(".jpg") || fileName.toLowerCase().endsWith(".png")
               || "jpg".equals(fileItem.getContentType()) || "png".equals(fileItem.getContentType())) {
             processPhoto(fileName, fileItem, out, ipAddress);
+            sb.append(TAG + " Processed file: " + fileName);
           } else {
-            System.out.print(TAG + " Do not know what to do with " + fileName);
+            sb.append(TAG + " Do not know what to do with " + fileName + "\n");
           }
         } catch (Exception e) {
           e.printStackTrace();
+          sb.append(e.getLocalizedMessage() + "\n");
         }
       }
     }
+    out.write(sb.toString());
     out.flush();
     out.close();
   }

@@ -8,7 +8,6 @@ import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class TimeImageServlet extends HttpServlet {
   private static final long serialVersionUID = 1838634471441519824L;
-  private final int WIDTH = 1920;
   private final int HEIGHT = 1080;
+  private final int WIDTH = 1920;
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setHeader("Refresh", "60");

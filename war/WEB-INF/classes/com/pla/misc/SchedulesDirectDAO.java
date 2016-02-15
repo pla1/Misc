@@ -18,12 +18,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 public class SchedulesDirectDAO {
-  private final static String username = "htplainf";
-  private final static String password = "MTCgmdHzXWmMKsR";
   private final static String BASE_URL = "https://json.schedulesdirect.org/20140530/";
-  private static String token;
-  private final static String postalCode = "29405";
   private static final String jsonTest = "{ \"60030\": { \"type\": \"Over-the-Air\", \"location\": \"60030\", \"lineups\": [ { \"name\": \"Antenna\", \"uri\": \"/20131021/lineups/USA-OTA-60030\" } ] }, \"4DTV\": { \"type\": \"Satellite\", \"location\": \"USA\", \"lineups\": [ { \"name\": \"4DTV\", \"uri\": \"/20131021/lineups/USA-4DTV-DEFAULT\" } ] } }";
+  private final static String password = "SUPERSECRETPASSWORD";
+  private final static String postalCode = "29405";
+  private static String token;
+  private final static String username = "htplainf";
 
   public static void main(String[] args) throws Exception {
     SchedulesDirectDAO dao = new SchedulesDirectDAO();
@@ -47,18 +47,6 @@ public class SchedulesDirectDAO {
   public SchedulesDirectDAO() {
   }
 
-  private void getHeadends() throws NoSuchAlgorithmException, IllegalStateException, IOException {
-    HttpGet request = new HttpGet(BASE_URL + "headends?country=USA&postalcode=" + postalCode);
-    request.setHeader("Accept", "application/json");
-    request.setHeader("Content-type", "application/json");
-    request.setHeader("User-Agent", "Patrick.Archibald@gmail.com");
-    request.setHeader("token", token);
-    HttpResponse response = new DefaultHttpClient().execute(request);
-    BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
-    JSONObject json = (JSONObject) JSONValue.parse(reader);
-    System.out.println(json.toJSONString());
-  }
-
   private void checkStatus() throws NoSuchAlgorithmException, IllegalStateException, IOException {
     HttpGet request = new HttpGet(BASE_URL + "status");
     request.setHeader("Accept", "application/json");
@@ -77,6 +65,18 @@ public class SchedulesDirectDAO {
       throw new IOException("Status is not Online. Stop accessing the server. Try again later.");
     }
 
+  }
+
+  private void getHeadends() throws NoSuchAlgorithmException, IllegalStateException, IOException {
+    HttpGet request = new HttpGet(BASE_URL + "headends?country=USA&postalcode=" + postalCode);
+    request.setHeader("Accept", "application/json");
+    request.setHeader("Content-type", "application/json");
+    request.setHeader("User-Agent", "Patrick.Archibald@gmail.com");
+    request.setHeader("token", token);
+    HttpResponse response = new DefaultHttpClient().execute(request);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+    JSONObject json = (JSONObject) JSONValue.parse(reader);
+    System.out.println(json.toJSONString());
   }
 
   private void setToken() throws NoSuchAlgorithmException, IllegalStateException, IOException {

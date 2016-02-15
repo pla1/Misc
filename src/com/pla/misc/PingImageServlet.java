@@ -18,12 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 public class PingImageServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1772025897783209959L;
-  private final int WIDTH = 10;
   private final int HEIGHT = 10;
-
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    doGet(request, response);
-  }
+  private final int WIDTH = 10;
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String ip = null;
@@ -50,12 +46,8 @@ public class PingImageServlet extends HttpServlet {
     ImageIO.write(bufferedImage, "png", response.getOutputStream());
   }
 
-  private boolean isBlank(String s) {
-    if (s == null || s.trim().length() == 0) {
-      return true;
-    } else {
-      return false;
-    }
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    doGet(request, response);
   }
 
   private boolean isAlive(String ipAddress) {
@@ -86,5 +78,13 @@ public class PingImageServlet extends HttpServlet {
       }
     }
     return result;
+  }
+
+  private boolean isBlank(String s) {
+    if (s == null || s.trim().length() == 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -5,13 +5,21 @@
 		<servlet-name>TimeImageServlet</servlet-name>
 		<servlet-class>com.pla.misc.TimeImageServlet</servlet-class>
 	</servlet>
-		<servlet>
+	<servlet>
 		<servlet-name>PingImageServlet</servlet-name>
 		<servlet-class>com.pla.misc.PingImageServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>MyIpServlet</servlet-name>
 		<servlet-class>com.pla.misc.MyIpServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LastUploadServlet</servlet-name>
+		<servlet-class>com.pla.misc.LastUploadServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FileUploadServlet</servlet-name>
+		<servlet-class>com.pla.misc.FileUploadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TimeImageServlet</servlet-name>
@@ -24,5 +32,13 @@
 	<servlet-mapping>
 		<servlet-name>MyIpServlet</servlet-name>
 		<url-pattern>/MyIp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LastUploadServlet</servlet-name>
+		<url-pattern>/LastUploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FileUploadServlet</servlet-name>
+		<url-pattern>/FileUploadServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

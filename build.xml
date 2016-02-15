@@ -16,11 +16,14 @@
 		<copy todir="war/WEB-INF/resources">
 			<fileset dir="WEB-INF/resources" />
 		</copy>
+		<copy todir="war/WEB-INF/lib">
+			<fileset dir="WEB-INF/lib" />
+		</copy>
 	</target>
 	<target name="war" depends="build" description="Create a war file">
 		<zip destfile="Misc.war" basedir="war" />
-		<delete	dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc.war" failonerror="false" />
+		<delete dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc.war" failonerror="false" />
 		<delete dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc" failonerror="false" />
 		<copy file="Misc.war" todir="/home/htplainf/apache-tomcat-8.0.11/webapps" />
 	</target>
-</project>	
+</project>

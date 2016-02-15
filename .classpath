@@ -11,5 +11,7 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/httpcore-4.3.3.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/httpmime-4.3.6.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/postgresql-9.3-1102.jdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

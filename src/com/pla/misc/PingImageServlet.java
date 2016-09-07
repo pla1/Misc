@@ -81,10 +81,6 @@ public class PingImageServlet extends HttpServlet {
   }
 
   private boolean isBlank(String s) {
-    if (s == null || s.trim().length() == 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return (s == null || s.trim().length() == 0);
   }
 }

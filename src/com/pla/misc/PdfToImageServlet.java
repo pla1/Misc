@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hometelco.commons.Utilities;
+/**
+ * Uses ImageMagick to convert page 1 of a PDF file to a PNG image.
+ * 
+ */
 
 public class PdfToImageServlet extends HttpServlet {
   private static final long serialVersionUID = -8960219753629640363L;
@@ -21,7 +24,7 @@ public class PdfToImageServlet extends HttpServlet {
     String pdfFile = request.getParameter("pdfFile");
     String resizeTo = request.getParameter("resizeTo");
     System.out.format("PDF file name: %s Resize to: %s - %s\n", pdfFile, resizeTo, TAG);
-    if (Utilities.isBlank(pdfFile)) {
+    if (pdfFile == null || pdfFile.trim().length() == 0) {
       response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing parameter: pdfFile");
       return;
     }
@@ -37,7 +40,7 @@ public class PdfToImageServlet extends HttpServlet {
     }
     String imageFileName = String.format("/tmp/%s", file.getName().replace(".pdf", ".png"));
     String pageOneFileName = String.format("%s[0]", file.getAbsolutePath());
-    if (Utilities.isBlank(resizeTo)) {
+    if (resizeTo == null || resizeTo.trim().length() == 0) {
       resizeTo = "25%";
     }
     String[] commandParts = { "/usr/bin/convert", "-density", "300", pageOneFileName, "-resize", resizeTo, imageFileName };

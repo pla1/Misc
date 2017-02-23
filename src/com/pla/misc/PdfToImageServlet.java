@@ -1,7 +1,5 @@
 package com.pla.misc;
 
-package com.hometelco.i;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -50,8 +48,7 @@ public class PdfToImageServlet extends HttpServlet {
     Process process = Runtime.getRuntime().exec(commandParts);
     try {
       process.waitFor();
-    }
-    catch (InterruptedException e) {
+    } catch (InterruptedException e) {
       e.printStackTrace();
       response.sendError(HttpServletResponse.SC_BAD_REQUEST,
           String.format("ImageMagick convert command failed with exception: %s", e.getLocalizedMessage()));
@@ -80,4 +77,3 @@ public class PdfToImageServlet extends HttpServlet {
     fileInputStream.close();
   }
 }
-

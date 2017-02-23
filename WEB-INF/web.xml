@@ -2,6 +2,10 @@
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
 	<servlet>
+		<servlet-name>PdfToImageServlet</servlet-name>
+		<servlet-class>com.pla.misc.PdfToImageServlet</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>TimeImageServlet</servlet-name>
 		<servlet-class>com.pla.misc.TimeImageServlet</servlet-class>
 	</servlet>
@@ -48,5 +52,9 @@
 	<servlet-mapping>
 		<servlet-name>FileUploadServlet</servlet-name>
 		<url-pattern>/FileUploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PdfToImageServlet</servlet-name>
+		<url-pattern>/PdfToImageServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

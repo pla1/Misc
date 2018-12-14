@@ -11,6 +11,8 @@ Returns a green image if IP address is PING'able and returns a red image when it
 <img src="http://pi.pla1.net?ip=208.67.222.222"> 208.67.222.222<br>
 <img src="http://pi.pla1.net?ip=208.67.220.220"> 208.67.220.220<br>
 
+Please deploy the Ping Image Servlet on your own server. Do you use mine for production use.
+
 # <a href="https://github.com/pla1/Misc/blob/master/src/com/pla/misc/TimeImageServlet.java">TimeImageServlet</a>
 Display the time of day in an image. Refreshes every 60 seconds. Used here: <a href="http://time0.net">http://time0.net</a>
 <img src="http://time0.net/Misc/">

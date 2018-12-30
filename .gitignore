@@ -3,3 +3,6 @@ war
 bin
 bin/*
 *.war
+.idea
+Misc.iml
+WEB-INF/lib

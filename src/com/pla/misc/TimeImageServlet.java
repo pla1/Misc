@@ -32,7 +32,7 @@ public class TimeImageServlet extends HttpServlet {
     g2d.fill(rectangle);
     g2d.setColor(Color.BLACK);
     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    Font font = new Font("Arial", Font.BOLD, 130);
+    Font font = new Font("Arial", Font.BOLD, 120);
     g2d.setFont(font);
     AffineTransform affinetransform = new AffineTransform();
     FontRenderContext frc = new FontRenderContext(affinetransform, true, true);

@@ -21,7 +21,7 @@ public class PingImageServlet extends HttpServlet {
   private final int HEIGHT = 10;
   private final int WIDTH = 10;
 
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String ip = null;
     for (Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
       String[] values = entry.getValue();
@@ -55,7 +55,7 @@ public class PingImageServlet extends HttpServlet {
       return false;
     }
     boolean result = false;
-    String cmd = "ping -c 1 -W 1 " + ipAddress;
+    String cmd = String.format("ping -c 1 -W 1 %s", ipAddress);
     BufferedReader bufferedReader = null;
     try {
       Runtime runtime = Runtime.getRuntime();
@@ -63,7 +63,9 @@ public class PingImageServlet extends HttpServlet {
       bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
       String line;
       while ((line = bufferedReader.readLine()) != null) {
-        if (line.indexOf("(0% loss)") != -1 || line.indexOf("successful (100 %)") != -1 || line.indexOf(" 0% packet loss,") != -1) {
+        if (line.contains("(0% loss)")
+                || line.contains("successful (100 %)")
+                || line.contains(" 0% packet loss,")) {
           result = true;
         }
       }

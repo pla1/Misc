@@ -22,8 +22,8 @@
 	</target>
 	<target name="war" depends="build" description="Create a war file">
 		<zip destfile="Misc.war" basedir="war" />
-		<delete dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc.war" failonerror="false" />
-		<delete dir="/home/htplainf/apache-tomcat-8.0.11/webapps/Misc" failonerror="false" />
-		<copy file="Misc.war" todir="/home/htplainf/apache-tomcat-8.0.11/webapps" />
+		<delete dir="/home/htplainf/projects/apache-tomcat-8.5.35/webapps/Misc.war" failonerror="false" />
+		<delete dir="/home/htplainf/projects/apache-tomcat-8.5.35/webapps/Misc" failonerror="false" />
+		<copy file="Misc.war" todir="/home/htplainf/projects/apache-tomcat-8.5.35/webapps/" />
 	</target>
 </project>

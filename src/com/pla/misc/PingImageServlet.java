@@ -30,7 +30,7 @@ public class PingImageServlet extends HttpServlet {
       }
     }
     if (isBlank(ip)) {
-      response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing ip address parameter.");
+      response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing parameter: IP address or host name. Example: https://pingimage.net?q=8.8.8.8");
       return;
     }
     response.setContentType("image/png");
@@ -51,9 +51,6 @@ public class PingImageServlet extends HttpServlet {
   }
 
   private boolean isAlive(String ipAddress) {
-    if (isBlank(ipAddress)) {
-      return false;
-    }
     boolean result = false;
     String cmd = String.format("ping -c 1 -W 1 %s", ipAddress);
     BufferedReader bufferedReader = null;

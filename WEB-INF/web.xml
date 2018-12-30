@@ -35,7 +35,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>PingImageServlet</servlet-name>
-		<url-pattern>/PingImageServlet</url-pattern>
+		<url-pattern>/PingImageServlet/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>MyIpServlet</servlet-name>

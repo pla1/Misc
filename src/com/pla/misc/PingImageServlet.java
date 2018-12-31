@@ -22,28 +22,11 @@ public class PingImageServlet extends HttpServlet {
     private final int WIDTH = 10;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String ip = null;
-        for (Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
-            String[] values = entry.getValue();
-            if (values.length > 0) {
-                ip = values[0];
-            }
-        }
+        String ip = getIpFromRequest(request);
         if (isBlank(ip)) {
-            String path = request.getPathInfo();
-            if (!isBlank(path)) {
-                String[] words = path.split("/");
-                if (words.length > 1) {
-                    ip = words[1];
-                } else {
-                    ip = path;
-                }
-            }
-        }
-        if (isBlank(ip)) {
-            String message = String.format( "Missing parameter: IP address or host name. Examples: https://pingimage.net?q=8.8.8.8 OR https://pingimage.net/8.8.8.8 You provided: Query string: \"%s\" Path info: \"%s\"",
-                     request.getQueryString(), request.getPathInfo());
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST,message);
+            String message = String.format("Missing parameter: IP address or host name. Examples: https://pingimage.net?q=8.8.8.8 OR https://pingimage.net/8.8.8.8 You provided: Query string: \"%s\" Path info: \"%s\"",
+                    request.getQueryString(), request.getPathInfo());
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, message);
             return;
         }
         response.setContentType("image/png");
@@ -57,6 +40,25 @@ public class PingImageServlet extends HttpServlet {
         }
         g2d.fill(rectangle);
         ImageIO.write(bufferedImage, "png", response.getOutputStream());
+    }
+
+    private String getIpFromRequest(HttpServletRequest request) {
+        for (Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
+            String[] values = entry.getValue();
+            if (values.length > 0) {
+                return values[0];
+            }
+        }
+        String path = request.getPathInfo();
+        if (!isBlank(path)) {
+            String[] words = path.split("/");
+            if (words.length > 1) {
+                return words[1];
+            } else {
+                return path;
+            }
+        }
+        return null;
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

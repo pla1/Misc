@@ -54,8 +54,6 @@ public class PingImageServlet extends HttpServlet {
             String[] words = path.split("/");
             if (words.length > 1) {
                 return words[1];
-            } else {
-                return path;
             }
         }
         return null;
